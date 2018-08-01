@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@(Html.DevExtreme().DataGrid<LapBK_MVC.Models.mvcDM_Xa>().DataSource(ds => ds
+            .RemoteController()
+            .LoadUrl("http://localhost:65280/api/Xa/get")
+            .InsertUrl("http://localhost:65280/api/Xa/post")
+            .UpdateUrl("http://localhost:65280/api/Xa/put")
+            .DeleteUrl("http://localhost:65280/api/Xa/delete")
+            .Key("MaXa")
+            )
+                .RemoteOperations(true)
+                .Columns(columns =>
+                {
+                    columns.AddFor(m => m.MaTinh).Caption("Mã Tỉnh");
+                    columns.AddFor(m => m.MaHuyen).Caption("Mã Huyện");
+                    columns.AddFor(m => m.MaXa).Caption("Mã Xã");
+                    columns.AddFor(m => m.TenXa).Caption("Tên Xã");
+                    columns.AddFor(m => m.TTNT).Caption("TTNT");
+                   
+                })
+                .Editing(e => e
+                    .AllowAdding(true)
+                    .AllowUpdating(true)
+                    .AllowDeleting(true)
+                )
+)

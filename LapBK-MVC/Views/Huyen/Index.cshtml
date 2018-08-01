@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh mục Huyện</h2>
+
+
+@(Html.DevExtreme().DataGrid<LapBK_MVC.Models.mvcDM_Huyen>().DataSource(ds => ds
+        .RemoteController()
+        .LoadUrl("http://localhost:65280/api/Huyen/get")
+        .InsertUrl("http://localhost:65280/api/Huyen/post")
+        .UpdateUrl("http://localhost:65280/api/Huyen/put")
+        .DeleteUrl("http://localhost:65280/api/Huyen/delete")
+        .Key("MaHuyen")
+        )
+            .RemoteOperations(true)
+            .Columns(columns =>
+            {
+                columns.AddFor(m => m.MaTinh).Caption("Mã Tỉnh");
+                columns.AddFor(m => m.MaHuyen).Caption("Mã Huyện");
+                columns.AddFor(m => m.TenHuyen).Caption("Tên Huyện");
+            })
+            .Editing(e => e
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+            )
+)
+
+<script>
+    function lookup_displayExpr(xa) {
+        if (!xa) {
+            return "";
+        }
+        return xa.TenXa
+    }
+</script>

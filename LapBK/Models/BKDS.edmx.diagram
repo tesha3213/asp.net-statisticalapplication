@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44d528edbc6e4cdfb782c60162e70804" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="BangKeDS2019Model.BK_DiaBan" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.BK_Ho" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.BK_Thon" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.DM_Huyen" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.DM_Tinh" Width="1.5" PointX="6.625" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.DM_TrangThaiDiaBan" Width="1.5" PointX="6.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.DM_Xa" Width="1.5" PointX="2.875" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.QL_ThongTinDiaBan" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.QT_DanhSachChucNang" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.QT_NguoiDung" Width="1.5" PointX="6.625" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.QT_NhomNguoiDung" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.QT_PhanQuyen" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.QT_SystemLog" Width="1.5" PointX="10.375" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.Tam_TongHopTienDo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangKeDS2019Model.TMP_BangKeHo" Width="1.5" PointX="8.625" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="BangKeDS2019Model.FK_Tam_TongHopTienDo_Tam_TongHopTienDo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh mục Tỉnh</h2>
+
+@(Html.DevExtreme().DataGrid<LapBK_MVC.Models.mvcDM_Tinh>().DataSource(ds => ds
+    .RemoteController()
+    .LoadUrl("http://localhost:65280/api/Tinh/get")
+    .InsertUrl("http://localhost:65280/api/Tinh/post")
+    .UpdateUrl("http://localhost:65280/api/Tinh/put")
+    .DeleteUrl("http://localhost:65280/api/Tinh/delete")
+    .Key("MaTinh")
+    )
+        .RemoteOperations(true)
+        .Columns(columns =>
+        {
+            columns.AddFor(m => m.MaTinh).Caption("Mã Tỉnh");
+            columns.AddFor(m => m.TenTinh).Caption("Tên Tỉnh");
+            
+        })
+        .Editing(e => e
+            .AllowAdding(true)
+            .AllowUpdating(true)
+            .AllowDeleting(true)
+        )
+)
+
+<script>
+    function lookup_displayExpr(xa) {
+        if (!xa) {
+            return "";
+        }
+        return xa.TenXa
+    }
+</script>

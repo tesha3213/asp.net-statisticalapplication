@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bảng kê Hộ</h2>
+
+
+@(Html.DevExtreme().DataGrid<LapBK_MVC.Models.mvcBK_Ho>().DataSource(ds => ds
+        .RemoteController()
+        .LoadUrl("http://localhost:65280/api/Ho/get")
+        .InsertUrl("http://localhost:65280/api/Ho/post")
+        .UpdateUrl("http://localhost:65280/api/Ho/put")
+        .DeleteUrl("http://localhost:65280/api/Ho/delete")
+        .Key("IdHo")
+        )
+            .RemoteOperations(true)
+            .Columns(columns =>
+            {
+                columns.AddFor(m => m.TenChuHo).Caption("Tên chủ hộ");
+                columns.AddFor(m => m.TongSoNguoi).Caption("Tổng số người");
+
+            })
+            .Editing(e => e
+                .AllowAdding(true)
+                .AllowUpdating(true)
+                .AllowDeleting(true)
+            )
+)
+

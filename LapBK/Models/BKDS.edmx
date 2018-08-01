@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BangKeDS2019Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BK_DiaBan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaXa" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="MaThon" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="MaDiaBan" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="TenDiaBan" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="TongSoHo" Type="int" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="1024" />
+          <Property Name="IsDiaBanMau" Type="bit" />
+        </EntityType>
+        <EntityType Name="BK_Ho">
+          <Key>
+            <PropertyRef Name="IdHo" />
+          </Key>
+          <Property Name="IdHo" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="MaTinh" Type="nvarchar" MaxLength="2" />
+          <Property Name="MaHuyen" Type="nvarchar" MaxLength="3" />
+          <Property Name="MaXa" Type="nvarchar" MaxLength="5" />
+          <Property Name="MaThon" Type="nvarchar" MaxLength="2" />
+          <Property Name="MaDiaBan" Type="nvarchar" MaxLength="3" />
+          <Property Name="Latitude_V" Type="float" />
+          <Property Name="Longitude_K" Type="float" />
+          <Property Name="SttNha" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="SttHo" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="TTNT" Type="int" Nullable="false" />
+          <Property Name="TenChuHo" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="SoDienThoai" Type="nvarchar" MaxLength="13" />
+          <Property Name="TongSoNguoi" Type="int" Nullable="false" />
+          <Property Name="TongSoNu" Type="int" Nullable="false" />
+          <Property Name="IsWebForm" Type="bit" />
+          <Property Name="IsHoMau" Type="bit" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FullAddress" Type="nvarchar" MaxLength="256" />
+          <Property Name="StreetNum" Type="nvarchar" MaxLength="10" />
+          <Property Name="StreetName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Village" Type="nvarchar" MaxLength="150" />
+          <Property Name="WardsName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistrictName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BK_Thon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaXa" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="MaThon" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="TenThon" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DM_Huyen">
+          <Key>
+            <PropertyRef Name="MaHuyen" />
+          </Key>
+          <Property Name="MaTinh" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="MaHuyen" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="TenHuyen" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DM_Tinh">
+          <Key>
+            <PropertyRef Name="MaTinh" />
+          </Key>
+          <Property Name="MaTinh" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="TenTinh" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="MaVung" Type="nvarchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DM_TrangThaiDiaBan">
+          <Key>
+            <PropertyRef Name="MaTrangThai" />
+          </Key>
+          <Property Name="MaTrangThai" Type="int" Nullable="false" />
+          <Property Name="TenTrangThai" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="DM_Xa">
+          <Key>
+            <PropertyRef Name="MaXa" />
+          </Key>
+          <Property Name="MaTinh" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="MaHuyen" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="MaXa" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="TenXa" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="TTNT" Type="int" Nullable="false" />
+          <Property Name="Xa" Type="nvarchar" MaxLength="2" />
+          <Property Name="Phuong" Type="nvarchar" MaxLength="2" />
+          <Property Name="ThiTran" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'BangKeDS2019.dbo.QL_ThietLap' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="QL_ThietLap">
+          <Property Name="TiLeDiaBan" Type="int" />
+          <Property Name="TiLeHoMau" Type="int" />
+          <Property Name="KhoangCachToiThieu" Type="int" />
+          <Property Name="KhoangCachToiDa" Type="int" />
+        </EntityType>-->
+        <EntityType Name="QL_ThongTinDiaBan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaTinh" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="MaHuyen" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="MaXa" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="MaThon" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="MaDiaBan" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="TongSoNha" Type="int" />
+          <Property Name="TongSoHo" Type="int" />
+          <Property Name="SoHoWebForm" Type="int" />
+          <Property Name="SoHoMau" Type="int" />
+          <Property Name="TongSoNguoi" Type="int" />
+          <Property Name="TongSoNu" Type="int" />
+          <Property Name="MaTrangThai" Type="int" />
+        </EntityType>
+        <EntityType Name="QT_DanhSachChucNang">
+          <Key>
+            <PropertyRef Name="MaChucNang" />
+          </Key>
+          <Property Name="MaChucNang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenChucNang" Type="nvarchar" MaxLength="256" />
+          <Property Name="TenForm" Type="nvarchar" MaxLength="256" />
+          <Property Name="ParentId" Type="int" />
+        </EntityType>
+        <EntityType Name="QT_NguoiDung">
+          <Key>
+            <PropertyRef Name="MaNguoiDung" />
+          </Key>
+          <Property Name="MaNguoiDung" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNguoiDung" Type="nvarchar" MaxLength="128" />
+          <Property Name="TenDangNhap" Type="nvarchar" MaxLength="32" />
+          <Property Name="MatKhau" Type="nvarchar" MaxLength="64" />
+          <Property Name="MaTinh" Type="nvarchar" MaxLength="2" />
+          <Property Name="MaNhom" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QT_NhomNguoiDung">
+          <Key>
+            <PropertyRef Name="MaNhom" />
+          </Key>
+          <Property Name="MaNhom" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="TenNhom" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="QT_PhanQuyen">
+          <Key>
+            <PropertyRef Name="MaNhom" />
+            <PropertyRef Name="MaChucNang" />
+          </Key>
+          <Property Name="MaNhom" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="MaChucNang" Type="int" Nullable="false" />
+          <Property Name="ActiveView" Type="bit" />
+          <Property Name="ActiveEdit" Type="bit" />
+          <Property Name="ActivePrint" Type="bit" />
+          <Property Name="ActiveAll" Type="bit" />
+        </EntityType>
+        <EntityType Name="QT_SystemLog">
+          <Key>
+            <PropertyRef Name="IdLog" />
+          </Key>
+          <Property Name="IdLog" Type="int" Nullable="false" />
+          <Property Name="MaNguoiDung" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateLog" Type="datetime" />
+          <Property Name="MyFunction" Type="nvarchar" MaxLength="500" />
+          <Property Name="MyAction" Type="nvarchar" MaxLength="50" />
+          <Property Name="MyObject" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Tam_TongHopTienDo">
+          <Key>
+            <PropertyRef Name="MaDonVi" />
+          </Key>
+          <Property Name="MaTinh" Type="varchar" MaxLength="2" />
+          <Property Name="MaDonVi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenDonvi" Type="nvarchar" MaxLength="250" />
+          <Property Name="MaDonViCha" Type="varchar" MaxLength="50" />
+          <Property Name="Cap" Type="int" />
+          <Property Name="LoaiDonvi" Type="varchar" MaxLength="50" />
+          <Property Name="TSDiaBan" Type="int" />
+          <Property Name="TSDiaBanHT" Type="int" />
+          <Property Name="TSHo" Type="int" />
+          <Property Name="SoHoMau" Type="int" />
+          <Property Name="SoHoWeb" Type="int" />
+          <Property Name="TSNha" Type="int" />
+          <Property Name="TSNguoi" Type="int" />
+          <Property Name="TSNu" Type="int" />
+        </EntityType>
+        <EntityType Name="TMP_BangKeHo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MaTinh" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="MaHuyen" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="MaXa" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="MaThon" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="MaDiaBan" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="TTNT" Type="int" Nullable="false" />
+          <Property Name="SttNha" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="SttHo" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="TenTinh" Type="nvarchar" MaxLength="256" />
+          <Property Name="TenHuyen" Type="nvarchar" MaxLength="256" />
+          <Property Name="TenXa" Type="nvarchar" MaxLength="256" />
+          <Property Name="TenThon" Type="nvarchar" MaxLength="256" />
+          <Property Name="TenDiaBan" Type="nvarchar" MaxLength="256" />
+          <Property Name="TenChuHo" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="SoDienThoai" Type="nvarchar" MaxLength="11" />
+          <Property Name="TongSoNguoi" Type="int" Nullable="false" />
+          <Property Name="TongSoNu" Type="int" Nullable="false" />
+          <Property Name="IsWebForm" Type="bit" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <Association Name="FK_Tam_TongHopTienDo_Tam_TongHopTienDo">
+          <End Role="Tam_TongHopTienDo" Type="Self.Tam_TongHopTienDo" Multiplicity="0..1" />
+          <End Role="Tam_TongHopTienDo1" Type="Self.Tam_TongHopTienDo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tam_TongHopTienDo">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="Tam_TongHopTienDo1">
+              <PropertyRef Name="MaDonViCha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BangKeDS2019ModelStoreContainer">
+          <EntitySet Name="BK_DiaBan" EntityType="Self.BK_DiaBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BK_Ho" EntityType="Self.BK_Ho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BK_Thon" EntityType="Self.BK_Thon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_Huyen" EntityType="Self.DM_Huyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_Tinh" EntityType="Self.DM_Tinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_TrangThaiDiaBan" EntityType="Self.DM_TrangThaiDiaBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DM_Xa" EntityType="Self.DM_Xa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QL_ThongTinDiaBan" EntityType="Self.QL_ThongTinDiaBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QT_DanhSachChucNang" EntityType="Self.QT_DanhSachChucNang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QT_NguoiDung" EntityType="Self.QT_NguoiDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QT_NhomNguoiDung" EntityType="Self.QT_NhomNguoiDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QT_PhanQuyen" EntityType="Self.QT_PhanQuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QT_SystemLog" EntityType="Self.QT_SystemLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tam_TongHopTienDo" EntityType="Self.Tam_TongHopTienDo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TMP_BangKeHo" EntityType="Self.TMP_BangKeHo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Tam_TongHopTienDo_Tam_TongHopTienDo" Association="Self.FK_Tam_TongHopTienDo_Tam_TongHopTienDo">
+            <End Role="Tam_TongHopTienDo" EntitySet="Tam_TongHopTienDo" />
+            <End Role="Tam_TongHopTienDo1" EntitySet="Tam_TongHopTienDo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BangKeDS2019Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BK_DiaBan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaXa" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaThon" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaDiaBan" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenDiaBan" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TongSoHo" Type="Int32" />
+          <Property Name="GhiChu" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="IsDiaBanMau" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="BK_Ho">
+          <Key>
+            <PropertyRef Name="IdHo" />
+          </Key>
+          <Property Name="IdHo" Type="String" MaxLength="18" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaTinh" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MaHuyen" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="MaXa" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="MaThon" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MaDiaBan" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude_V" Type="Double" />
+          <Property Name="Longitude_K" Type="Double" />
+          <Property Name="SttNha" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SttHo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TTNT" Type="Int32" Nullable="false" />
+          <Property Name="TenChuHo" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="TongSoNguoi" Type="Int32" Nullable="false" />
+          <Property Name="TongSoNu" Type="Int32" Nullable="false" />
+          <Property Name="IsWebForm" Type="Boolean" />
+          <Property Name="IsHoMau" Type="Boolean" />
+          <Property Name="GhiChu" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FullAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="StreetNum" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StreetName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Village" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="WardsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BK_Thon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaXa" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaThon" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenThon" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DM_Huyen">
+          <Key>
+            <PropertyRef Name="MaHuyen" />
+          </Key>
+          <Property Name="MaTinh" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaHuyen" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenHuyen" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DM_Tinh">
+          <Key>
+            <PropertyRef Name="MaTinh" />
+          </Key>
+          <Property Name="MaTinh" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenTinh" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaVung" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DM_TrangThaiDiaBan">
+          <Key>
+            <PropertyRef Name="MaTrangThai" />
+          </Key>
+          <Property Name="MaTrangThai" Type="Int32" Nullable="false" />
+          <Property Name="TenTrangThai" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DM_Xa">
+          <Key>
+            <PropertyRef Name="MaXa" />
+          </Key>
+          <Property Name="MaTinh" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaHuyen" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaXa" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenXa" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TTNT" Type="Int32" Nullable="false" />
+          <Property Name="Xa" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Phuong" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ThiTran" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QL_ThongTinDiaBan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaTinh" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaHuyen" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaXa" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaThon" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaDiaBan" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TongSoNha" Type="Int32" />
+          <Property Name="TongSoHo" Type="Int32" />
+          <Property Name="SoHoWebForm" Type="Int32" />
+          <Property Name="SoHoMau" Type="Int32" />
+          <Property Name="TongSoNguoi" Type="Int32" />
+          <Property Name="TongSoNu" Type="Int32" />
+          <Property Name="MaTrangThai" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QT_DanhSachChucNang">
+          <Key>
+            <PropertyRef Name="MaChucNang" />
+          </Key>
+          <Property Name="MaChucNang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenChucNang" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TenForm" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QT_NguoiDung">
+          <Key>
+            <PropertyRef Name="MaNguoiDung" />
+          </Key>
+          <Property Name="MaNguoiDung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNguoiDung" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="MaTinh" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MaNhom" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QT_NhomNguoiDung">
+          <Key>
+            <PropertyRef Name="MaNhom" />
+          </Key>
+          <Property Name="MaNhom" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenNhom" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QT_PhanQuyen">
+          <Key>
+            <PropertyRef Name="MaNhom" />
+            <PropertyRef Name="MaChucNang" />
+          </Key>
+          <Property Name="MaNhom" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaChucNang" Type="Int32" Nullable="false" />
+          <Property Name="ActiveView" Type="Boolean" />
+          <Property Name="ActiveEdit" Type="Boolean" />
+          <Property Name="ActivePrint" Type="Boolean" />
+          <Property Name="ActiveAll" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="QT_SystemLog">
+          <Key>
+            <PropertyRef Name="IdLog" />
+          </Key>
+          <Property Name="IdLog" Type="Int32" Nullable="false" />
+          <Property Name="MaNguoiDung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateLog" Type="DateTime" Precision="3" />
+          <Property Name="MyFunction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MyAction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MyObject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tam_TongHopTienDo">
+          <Key>
+            <PropertyRef Name="MaDonVi" />
+          </Key>
+          <Property Name="MaTinh" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="MaDonVi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenDonvi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MaDonViCha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cap" Type="Int32" />
+          <Property Name="LoaiDonvi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TSDiaBan" Type="Int32" />
+          <Property Name="TSDiaBanHT" Type="Int32" />
+          <Property Name="TSHo" Type="Int32" />
+          <Property Name="SoHoMau" Type="Int32" />
+          <Property Name="SoHoWeb" Type="Int32" />
+          <Property Name="TSNha" Type="Int32" />
+          <Property Name="TSNguoi" Type="Int32" />
+          <Property Name="TSNu" Type="Int32" />
+          <NavigationProperty Name="Tam_TongHopTienDo1" Relationship="Self.FK_Tam_TongHopTienDo_Tam_TongHopTienDo" FromRole="Tam_TongHopTienDo" ToRole="Tam_TongHopTienDo1" />
+          <NavigationProperty Name="Tam_TongHopTienDo2" Relationship="Self.FK_Tam_TongHopTienDo_Tam_TongHopTienDo" FromRole="Tam_TongHopTienDo1" ToRole="Tam_TongHopTienDo" />
+        </EntityType>
+        <EntityType Name="TMP_BangKeHo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MaTinh" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaHuyen" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaXa" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaThon" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaDiaBan" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TTNT" Type="Int32" Nullable="false" />
+          <Property Name="SttNha" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SttHo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenTinh" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TenHuyen" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TenXa" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TenThon" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TenDiaBan" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TenChuHo" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="TongSoNguoi" Type="Int32" Nullable="false" />
+          <Property Name="TongSoNu" Type="Int32" Nullable="false" />
+          <Property Name="IsWebForm" Type="Boolean" Nullable="false" />
+          <Property Name="GhiChu" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Tam_TongHopTienDo_Tam_TongHopTienDo">
+          <End Role="Tam_TongHopTienDo" Type="Self.Tam_TongHopTienDo" Multiplicity="0..1" />
+          <End Role="Tam_TongHopTienDo1" Type="Self.Tam_TongHopTienDo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tam_TongHopTienDo">
+              <PropertyRef Name="MaDonVi" />
+            </Principal>
+            <Dependent Role="Tam_TongHopTienDo1">
+              <PropertyRef Name="MaDonViCha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BangKeDS2019Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BK_DiaBan" EntityType="Self.BK_DiaBan" />
+          <EntitySet Name="BK_Ho" EntityType="Self.BK_Ho" />
+          <EntitySet Name="BK_Thon" EntityType="Self.BK_Thon" />
+          <EntitySet Name="DM_Huyen" EntityType="Self.DM_Huyen" />
+          <EntitySet Name="DM_Tinh" EntityType="Self.DM_Tinh" />
+          <EntitySet Name="DM_TrangThaiDiaBan" EntityType="Self.DM_TrangThaiDiaBan" />
+          <EntitySet Name="DM_Xa" EntityType="Self.DM_Xa" />
+          <EntitySet Name="QL_ThongTinDiaBan" EntityType="Self.QL_ThongTinDiaBan" />
+          <EntitySet Name="QT_DanhSachChucNang" EntityType="Self.QT_DanhSachChucNang" />
+          <EntitySet Name="QT_NguoiDung" EntityType="Self.QT_NguoiDung" />
+          <EntitySet Name="QT_NhomNguoiDung" EntityType="Self.QT_NhomNguoiDung" />
+          <EntitySet Name="QT_PhanQuyen" EntityType="Self.QT_PhanQuyen" />
+          <EntitySet Name="QT_SystemLog" EntityType="Self.QT_SystemLog" />
+          <EntitySet Name="Tam_TongHopTienDo" EntityType="Self.Tam_TongHopTienDo" />
+          <EntitySet Name="TMP_BangKeHo" EntityType="Self.TMP_BangKeHo" />
+          <AssociationSet Name="FK_Tam_TongHopTienDo_Tam_TongHopTienDo" Association="Self.FK_Tam_TongHopTienDo_Tam_TongHopTienDo">
+            <End Role="Tam_TongHopTienDo" EntitySet="Tam_TongHopTienDo" />
+            <End Role="Tam_TongHopTienDo1" EntitySet="Tam_TongHopTienDo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BangKeDS2019ModelStoreContainer" CdmEntityContainer="BangKeDS2019Entities">
+          <EntitySetMapping Name="BK_DiaBan">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.BK_DiaBan">
+              <MappingFragment StoreEntitySet="BK_DiaBan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaXa" ColumnName="MaXa" />
+                <ScalarProperty Name="MaThon" ColumnName="MaThon" />
+                <ScalarProperty Name="MaDiaBan" ColumnName="MaDiaBan" />
+                <ScalarProperty Name="TenDiaBan" ColumnName="TenDiaBan" />
+                <ScalarProperty Name="TongSoHo" ColumnName="TongSoHo" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="IsDiaBanMau" ColumnName="IsDiaBanMau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BK_Ho">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.BK_Ho">
+              <MappingFragment StoreEntitySet="BK_Ho">
+                <ScalarProperty Name="IdHo" ColumnName="IdHo" />
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+                <ScalarProperty Name="MaHuyen" ColumnName="MaHuyen" />
+                <ScalarProperty Name="MaXa" ColumnName="MaXa" />
+                <ScalarProperty Name="MaThon" ColumnName="MaThon" />
+                <ScalarProperty Name="MaDiaBan" ColumnName="MaDiaBan" />
+                <ScalarProperty Name="Latitude_V" ColumnName="Latitude_V" />
+                <ScalarProperty Name="Longitude_K" ColumnName="Longitude_K" />
+                <ScalarProperty Name="SttNha" ColumnName="SttNha" />
+                <ScalarProperty Name="SttHo" ColumnName="SttHo" />
+                <ScalarProperty Name="TTNT" ColumnName="TTNT" />
+                <ScalarProperty Name="TenChuHo" ColumnName="TenChuHo" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="TongSoNguoi" ColumnName="TongSoNguoi" />
+                <ScalarProperty Name="TongSoNu" ColumnName="TongSoNu" />
+                <ScalarProperty Name="IsWebForm" ColumnName="IsWebForm" />
+                <ScalarProperty Name="IsHoMau" ColumnName="IsHoMau" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="StreetNum" ColumnName="StreetNum" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="Village" ColumnName="Village" />
+                <ScalarProperty Name="WardsName" ColumnName="WardsName" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BK_Thon">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.BK_Thon">
+              <MappingFragment StoreEntitySet="BK_Thon">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaXa" ColumnName="MaXa" />
+                <ScalarProperty Name="MaThon" ColumnName="MaThon" />
+                <ScalarProperty Name="TenThon" ColumnName="TenThon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_Huyen">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.DM_Huyen">
+              <MappingFragment StoreEntitySet="DM_Huyen">
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+                <ScalarProperty Name="MaHuyen" ColumnName="MaHuyen" />
+                <ScalarProperty Name="TenHuyen" ColumnName="TenHuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_Tinh">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.DM_Tinh">
+              <MappingFragment StoreEntitySet="DM_Tinh">
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+                <ScalarProperty Name="TenTinh" ColumnName="TenTinh" />
+                <ScalarProperty Name="MaVung" ColumnName="MaVung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_TrangThaiDiaBan">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.DM_TrangThaiDiaBan">
+              <MappingFragment StoreEntitySet="DM_TrangThaiDiaBan">
+                <ScalarProperty Name="MaTrangThai" ColumnName="MaTrangThai" />
+                <ScalarProperty Name="TenTrangThai" ColumnName="TenTrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_Xa">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.DM_Xa">
+              <MappingFragment StoreEntitySet="DM_Xa">
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+                <ScalarProperty Name="MaHuyen" ColumnName="MaHuyen" />
+                <ScalarProperty Name="MaXa" ColumnName="MaXa" />
+                <ScalarProperty Name="TenXa" ColumnName="TenXa" />
+                <ScalarProperty Name="TTNT" ColumnName="TTNT" />
+                <ScalarProperty Name="Xa" ColumnName="Xa" />
+                <ScalarProperty Name="Phuong" ColumnName="Phuong" />
+                <ScalarProperty Name="ThiTran" ColumnName="ThiTran" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QL_ThongTinDiaBan">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.QL_ThongTinDiaBan">
+              <MappingFragment StoreEntitySet="QL_ThongTinDiaBan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+                <ScalarProperty Name="MaHuyen" ColumnName="MaHuyen" />
+                <ScalarProperty Name="MaXa" ColumnName="MaXa" />
+                <ScalarProperty Name="MaThon" ColumnName="MaThon" />
+                <ScalarProperty Name="MaDiaBan" ColumnName="MaDiaBan" />
+                <ScalarProperty Name="TongSoNha" ColumnName="TongSoNha" />
+                <ScalarProperty Name="TongSoHo" ColumnName="TongSoHo" />
+                <ScalarProperty Name="SoHoWebForm" ColumnName="SoHoWebForm" />
+                <ScalarProperty Name="SoHoMau" ColumnName="SoHoMau" />
+                <ScalarProperty Name="TongSoNguoi" ColumnName="TongSoNguoi" />
+                <ScalarProperty Name="TongSoNu" ColumnName="TongSoNu" />
+                <ScalarProperty Name="MaTrangThai" ColumnName="MaTrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QT_DanhSachChucNang">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.QT_DanhSachChucNang">
+              <MappingFragment StoreEntitySet="QT_DanhSachChucNang">
+                <ScalarProperty Name="MaChucNang" ColumnName="MaChucNang" />
+                <ScalarProperty Name="TenChucNang" ColumnName="TenChucNang" />
+                <ScalarProperty Name="TenForm" ColumnName="TenForm" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QT_NguoiDung">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.QT_NguoiDung">
+              <MappingFragment StoreEntitySet="QT_NguoiDung">
+                <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
+                <ScalarProperty Name="TenNguoiDung" ColumnName="TenNguoiDung" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+                <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QT_NhomNguoiDung">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.QT_NhomNguoiDung">
+              <MappingFragment StoreEntitySet="QT_NhomNguoiDung">
+                <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+                <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QT_PhanQuyen">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.QT_PhanQuyen">
+              <MappingFragment StoreEntitySet="QT_PhanQuyen">
+                <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+                <ScalarProperty Name="MaChucNang" ColumnName="MaChucNang" />
+                <ScalarProperty Name="ActiveView" ColumnName="ActiveView" />
+                <ScalarProperty Name="ActiveEdit" ColumnName="ActiveEdit" />
+                <ScalarProperty Name="ActivePrint" ColumnName="ActivePrint" />
+                <ScalarProperty Name="ActiveAll" ColumnName="ActiveAll" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QT_SystemLog">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.QT_SystemLog">
+              <MappingFragment StoreEntitySet="QT_SystemLog">
+                <ScalarProperty Name="IdLog" ColumnName="IdLog" />
+                <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
+                <ScalarProperty Name="DateLog" ColumnName="DateLog" />
+                <ScalarProperty Name="MyFunction" ColumnName="MyFunction" />
+                <ScalarProperty Name="MyAction" ColumnName="MyAction" />
+                <ScalarProperty Name="MyObject" ColumnName="MyObject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tam_TongHopTienDo">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.Tam_TongHopTienDo">
+              <MappingFragment StoreEntitySet="Tam_TongHopTienDo">
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+                <ScalarProperty Name="MaDonVi" ColumnName="MaDonVi" />
+                <ScalarProperty Name="TenDonvi" ColumnName="TenDonvi" />
+                <ScalarProperty Name="MaDonViCha" ColumnName="MaDonViCha" />
+                <ScalarProperty Name="Cap" ColumnName="Cap" />
+                <ScalarProperty Name="LoaiDonvi" ColumnName="LoaiDonvi" />
+                <ScalarProperty Name="TSDiaBan" ColumnName="TSDiaBan" />
+                <ScalarProperty Name="TSDiaBanHT" ColumnName="TSDiaBanHT" />
+                <ScalarProperty Name="TSHo" ColumnName="TSHo" />
+                <ScalarProperty Name="SoHoMau" ColumnName="SoHoMau" />
+                <ScalarProperty Name="SoHoWeb" ColumnName="SoHoWeb" />
+                <ScalarProperty Name="TSNha" ColumnName="TSNha" />
+                <ScalarProperty Name="TSNguoi" ColumnName="TSNguoi" />
+                <ScalarProperty Name="TSNu" ColumnName="TSNu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TMP_BangKeHo">
+            <EntityTypeMapping TypeName="BangKeDS2019Model.TMP_BangKeHo">
+              <MappingFragment StoreEntitySet="TMP_BangKeHo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+                <ScalarProperty Name="MaHuyen" ColumnName="MaHuyen" />
+                <ScalarProperty Name="MaXa" ColumnName="MaXa" />
+                <ScalarProperty Name="MaThon" ColumnName="MaThon" />
+                <ScalarProperty Name="MaDiaBan" ColumnName="MaDiaBan" />
+                <ScalarProperty Name="TTNT" ColumnName="TTNT" />
+                <ScalarProperty Name="SttNha" ColumnName="SttNha" />
+                <ScalarProperty Name="SttHo" ColumnName="SttHo" />
+                <ScalarProperty Name="TenTinh" ColumnName="TenTinh" />
+                <ScalarProperty Name="TenHuyen" ColumnName="TenHuyen" />
+                <ScalarProperty Name="TenXa" ColumnName="TenXa" />
+                <ScalarProperty Name="TenThon" ColumnName="TenThon" />
+                <ScalarProperty Name="TenDiaBan" ColumnName="TenDiaBan" />
+                <ScalarProperty Name="TenChuHo" ColumnName="TenChuHo" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="TongSoNguoi" ColumnName="TongSoNguoi" />
+                <ScalarProperty Name="TongSoNu" ColumnName="TongSoNu" />
+                <ScalarProperty Name="IsWebForm" ColumnName="IsWebForm" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

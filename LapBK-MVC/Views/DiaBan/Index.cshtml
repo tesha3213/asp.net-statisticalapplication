@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@(Html.DevExtreme().DataGrid<LapBK_MVC.Models.mvcBK_DiaBan>().DataSource(ds => ds
+                .RemoteController()
+                .LoadUrl("http://localhost:65280/api/DiaBan/get")
+                .InsertUrl("http://localhost:65280/api/DiaBan/post")
+                .UpdateUrl("http://localhost:65280/api/DiaBan/put")
+                .DeleteUrl("http://localhost:65280/api/DiaBan/delete")
+                .Key("MaXa")
+                )
+                    .RemoteOperations(true)
+                    .Columns(columns =>
+                    {
+                        columns.AddFor(m => m.MaXa).Caption("Mã Tỉnh");
+                        columns.AddFor(m => m.MaThon).Caption("Mã Huyện");
+                        columns.AddFor(m => m.MaDiaBan).Caption("Mã Xã");
+                        columns.AddFor(m => m.TenDiaBan).Caption("Tên Xã");
+                        columns.AddFor(m => m.TongSoHo).Caption("Tổng số hộ");
+                        columns.AddFor(m => m.IsDiaBanMau).Caption("Địa bàn mẫu");
+
+                    })
+                    .Editing(e => e
+                        .AllowAdding(true)
+                        .AllowUpdating(true)
+                        .AllowDeleting(true)
+                    )
+)
+

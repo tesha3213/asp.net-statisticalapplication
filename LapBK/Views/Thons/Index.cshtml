@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Thon";
+}
+
+<h2>View1</h2>
+
+@(Html.DevExtreme().DataGrid<LapBK.Models.Thon>()
+    .DataSource(ds => ds.WebApi()
+        .Controller("Thons")
+		.RouteName("BK_ThonApi")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("Id")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Id);
+
+        columns.AddFor(m => m.MaXa);
+
+        columns.AddFor(m => m.MaThon);
+
+        columns.AddFor(m => m.TenThon);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)
